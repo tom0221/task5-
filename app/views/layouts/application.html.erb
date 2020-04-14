@@ -1,0 +1,99 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample7">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+        <div class="nav navbar-nav navbar-left">
+          <span class="navbar-brand">
+          Bookers
+          </span>
+        </div>
+
+        <div class="nav navbar-nav navbar-right">
+          <div id="slidemenu">
+           <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+            <% if user_signed_in? %>
+              <li class="">
+                <%= link_to 'Home', user_path(current_user.id),class: "glyphicon glyphicon-home" %>
+              </li>
+              <li class="">
+                <%= link_to 'Users', users_path,class: "glyphicon glyphicon-user" %>
+              </li>
+              <li class="">
+                <%= link_to 'Books', books_path,class: "glyphicon glyphicon-book"%>
+              </li>
+              <li class="">
+                <%= link_to "logout", destroy_user_session_path,  class: "glyphicon glyphicon-log-out", method: :delete %>
+              </li>
+
+            <% else %>
+              <li class=""><span class="glyphicon glyphicon-home" aria-hidden="true">
+                <%= link_to "Home", root_path %></span>
+              </li>
+
+              <li class=""><span class="glyphicon glyphicon-link " aria-hidden="true">
+                <%= link_to "About", home_about_path %></span>
+              </li>
+
+              <li class=""><span class="glyphicon glyphicon-edit " aria-hidden="true">
+                <%= link_to "sign up", new_user_registration_path %></span>
+              </li>
+              <li class=""><span class="glyphicon glyphicon-log-in" aria-hidden="true">
+                <%= link_to "login", new_user_session_path %></span>
+              </li>
+            <% end %>
+           </ul>
+          </div>
+        </div>
+  </div>
+</nav>
+
+
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <div class="header" id="header">
+      <nav class="navbar navbar-main navbar-shadow" role="navigation" id="slide-nav">
+        <div class="container relative">
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+
+        </div>
+      </nav>
+    </nav>
+
+
+    <%= yield %>
+
+
+  </body>
+</html>
