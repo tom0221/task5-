@@ -65,7 +65,7 @@
 
         <tr>
          <td class="title-text">
-          <%= attachment_image_tag user, :profile_image, :fill, 40,40, format: 'jpeg', class: "img- pull-left profile-img", fallback: "no_image.jpg" %> </td>
+          <%= attachment_image_tag user, :profile_image, :fill, 40,40, format: 'jpeg', class: "img- pull-left profile-img", fallback: "no_image.jpg", size:'40x40' %> </td>
          <td class="title-text"><%= user.name %></td>
 
          <td><%= link_to "Show", "/users/#{user.id}" %></td>

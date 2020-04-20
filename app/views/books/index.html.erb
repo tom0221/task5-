@@ -56,6 +56,8 @@
          <th class="profile_image_id"></th>
          <th class="title-text">Title</th>
          <th class="title-text">Opinion</th>
+         <th class="favorite-icon"></th>
+         <th class="comment-count"></th>
         </tr>
 
         <% @books.each do |book| %>
@@ -67,6 +69,27 @@
          <% end %>    </td>
          <td class="title-text"><%= link_to book.title, book_path(book.id) %></td>
          <td class="title-text"><%= book.body %></td>
+    <!-- ここから -->
+         <td class="favorite-icon">
+　　　　    <% if book.favorited_by?(current_user) %>
+           <span>
+            <%= link_to book_favorites_path(book), method: :delete do %>
+            <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;"></span>
+            <%= book.favorites.count %>
+            <% end %>
+           </span>
+           <% else %>
+           <span>
+            <%= link_to book_favorites_path(book), method: :post do %>
+            <span class="fa fa-heart-o" aria-hidden="true"></span>
+            <%= book.favorites.count %>
+            <% end %>
+           </span>
+           <% end %>
+        </td>
+    <!-- ここまで -->
+
+         <td class="comment-list bt style-2">コメント数：<%= book.book_comments.count %></td>
          </tr>
         <% end %>
       </table>
