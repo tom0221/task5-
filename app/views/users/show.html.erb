@@ -16,9 +16,26 @@
               <th class="title-text">introduction</th>
               <th class="title-text"><%= @user.introduction %></th>
             </tr>
+
+            <tr>
+                <th class="title-text">follows</th>
+                <th class="title-text">
+                  <%= link_to @user.following_user.count, users_follower_path(id:@user.id) %>
+                </th>
+              </tr>
+
+              <tr>
+                <th class="title-text">followers</th>
+                <th class="title-text">
+                  <%= link_to @user.follower_user.count, users_followed_path(id:@user.id) %>
+                </th>
           </table>
 
          <%= link_to '', edit_user_path(current_user.id),class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+
+          <div class="follow_botton">
+           <%= render 'relationships/follow_text', user: @user %>
+          </div>
         
 
       <h2>New book</h2>
@@ -52,8 +69,8 @@
        <tr>
         <th class="profile_image_id"></th>
         <th class="title-text">Title</th>
-
         <th class="title-text">Opinion</th>
+        <th class="title-text"></th>
        </tr>
 
        <% @books.each do |book| %>

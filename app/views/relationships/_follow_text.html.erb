@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+  <p>
+    <% if current_user.following?(user) %>
+      <h3><%= link_to 'フォロー外す', unfollow_path(user.id), class: "label label-primary", method: :POST %></h3>
+    <% else %>
+     <h3> <%= link_to 'フォローする', follow_path(user.id), class: "label label-success", method: :POST %></h3>
+    <% end %>
+  </p>
+<% end %>
+

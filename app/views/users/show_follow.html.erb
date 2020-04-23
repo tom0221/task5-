@@ -1,0 +1,36 @@
+<h1>Follow Users</h1>
+
+  <table class="table table">
+    <tr>
+      <th class="profile_image_id">image</th>
+      <th class="title-text">name</th>
+      <th class="title-text"></th>
+      <th class="title-text"></th>
+      <th class="title-text"></th>
+      <th class="title-text"></th>
+    </tr>
+
+    <% @user.following_user.each do |user| %>
+
+    <tr>
+      <td class="title-text">
+          <%= attachment_image_tag user, :profile_image, :fill, 40,40, format: 'jpeg', class: "img- pull-left profile-img", fallback: "no_image.jpg", size:'40x40' %></td>
+      <td class="title-text"> <%= user.name %> </td>
+
+      <td class="title-text">フォロー数：
+        <%= user.following_user.count %></td>
+      <td class="title-text">フォロワー数：
+        <%= user.follower_user.count %></td>
+
+      <td class="follow_botton">
+        <%= render 'relationships/follow_text', user: user %>
+      </td>
+      <td><%= link_to "Show", "/users/#{user.id}" %></td>
+    </tr>
+
+
+    <% end %>
+  </table>
+
+
+<p class="text-right">CopyRight Infratop.inc</p>

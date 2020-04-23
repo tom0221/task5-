@@ -17,6 +17,21 @@
                 <th class="title-text">introduction</th>
                 <th class="title-text"><%= current_user.introduction %></th>
               </tr>
+
+              <tr>
+                <th class="title-text">follows</th>
+                <th class="title-text">
+                  <%= link_to @user.following_user.count, users_follower_path(id:@user.id) %>
+                </th>
+              </tr>
+
+              <tr>
+                <th class="title-text">followers</th>
+                <th class="title-text">
+                  <%= link_to @user.follower_user.count, users_followed_path(id:@user.id) %>
+                </th>
+
+              </tr>
             </table>
 
 
@@ -58,6 +73,7 @@
         <tr>
          <th class="profile_image_id">image</th>
          <th class="title-text">name</th>
+         <th class="follow_botton"></th>
          <th class="title-text"></th>
         </tr>
 
@@ -67,6 +83,9 @@
          <td class="title-text">
           <%= attachment_image_tag user, :profile_image, :fill, 40,40, format: 'jpeg', class: "img- pull-left profile-img", fallback: "no_image.jpg", size:'40x40' %> </td>
          <td class="title-text"><%= user.name %></td>
+         <td class="follow_botton">
+           <%= render 'relationships/follow_text', user: user %>
+         </td>
 
          <td><%= link_to "Show", "/users/#{user.id}" %></td>
 
