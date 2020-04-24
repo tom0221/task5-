@@ -15,14 +15,14 @@ class BooksController < ApplicationController
   end
 
   def index
-  	@book = Book.new
+  	@book = Book.new　#画像投稿の画面を表示するアクションメソッド
   	@books = Book.all
   end
 
   def show
     @user_book = Book.find(params[:id])
     @user = @user_book.user
-  	@book = Book.new
+  	@book = Book.new  #画像投稿の画面を表示するアクションメソッド
     @book = Book.find(params[:id])
     @book_comment = BookComment.new
   end
