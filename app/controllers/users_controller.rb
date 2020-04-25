@@ -55,6 +55,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def search
+    @users = User.search(params[:search])
+  end
+
   private
   def user_params
   	params.require(:user).permit(:name, :introduction, :profile_image)

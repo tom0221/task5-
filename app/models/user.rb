@@ -33,5 +33,13 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
+  def self.search(search)
+    if search
+      Post.where(['content LIKE ?', "%#{search}%"])
+    else
+      Post.all
+    end
+  end
+
 
 end
