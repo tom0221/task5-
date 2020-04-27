@@ -1,31 +1,5 @@
 
 <div class="container">
-
-  <p>お試し</p>
-  <%= form_with(scope: :search, url: users_path, method: :get, local: true) do %>
-    <%= text_field_tag :search %>
-    <%= submit_tag 'Search', :name => nil %>
-  <% end %>
-
-  <table>
-    
-      <tr>
-        <th>image</th>
-        <th>name</th>
-        <th></th>
-      </tr>
-      <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.name %></td>
-        <td></td>
-      </tr>
-  </table>
-
-
-    
-
-
   <div class="row">
     <div class="col-xs-3">
         <h2>User info</h2>
@@ -62,7 +36,6 @@
 
 
             <%= link_to '', edit_user_path(current_user.id),class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
-
 
 
         <%= form_for(@book) do |f| %>

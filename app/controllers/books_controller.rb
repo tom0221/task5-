@@ -1,6 +1,9 @@
 class BooksController < ApplicationController
 	before_action :authenticate_user!
 
+  def new
+  end
+
   def create
   	@book = Book.new(book_params)
   	@book.user_id = current_user.id
@@ -15,14 +18,14 @@ class BooksController < ApplicationController
   end
 
   def index
-  	@book = Book.new　#画像投稿の画面を表示するアクションメソッド
+  	@book = Book.new
   	@books = Book.all
   end
 
   def show
     @user_book = Book.find(params[:id])
     @user = @user_book.user
-  	@book = Book.new  #画像投稿の画面を表示するアクションメソッド
+  	@book = Book.new#画像投稿の画面を表示するアクションメソッド
     @book = Book.find(params[:id])
     @book_comment = BookComment.new
   end
