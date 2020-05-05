@@ -11,12 +11,12 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+  	@user = User.find(params[:id])#userを1件取ってくる。
     @books = Book.all
   	@book = Book.new
   end
 
-  def edit
+  def edit#編集コントローラ
   	@user = User.find(params[:id])
     if @user.id != current_user.id
       redirect_to user_path(current_user.id)

@@ -1,4 +1,4 @@
 class HomesController < ApplicationController
-  def top
+  def top#実際はこちら？
   end
 end
