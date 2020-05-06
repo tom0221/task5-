@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     @users = User.search(params[:search])
   end
 
-  private
+  private#ストロングパラメーター permit以下カラムの変更を許可する
   def user_params
   	params.require(:user).permit(:name, :introduction, :profile_image)
   end
