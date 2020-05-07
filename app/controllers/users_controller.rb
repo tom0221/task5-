@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def follower
+  def follower#フォロー機能
     @user = User.find(params[:id])
     @users = @user.followers
     render 'show_follow'
