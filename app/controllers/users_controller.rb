@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def edit#編集コントローラ
-  	@user = User.find(params[:id])
+  	@user = User.find(params[:id])#userを1件取ってくる。
     if @user.id != current_user.id
       redirect_to user_path(current_user.id)
     end
